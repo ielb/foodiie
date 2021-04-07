@@ -3,6 +3,7 @@
 
 
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import 'package:foodiie/config/config.dart';
 
@@ -20,7 +21,7 @@ class Widgets {
       return  Align(
     child:Container(
       margin: EdgeInsets.fromLTRB(0, 20, 0, 0),
-        width: Config.getWidth(context)/1.3,                
+        width: Config.getWidth(context)/1.5,                
         height: Config.getWidth(context)/7,
       child: TextFormField(
         initialValue: initialValue,
@@ -83,11 +84,11 @@ class Widgets {
         ),
       ));
   }
-  static Widget  foodcard(context,price){
+  static Widget  horisontalcard(context,price){
               return Container(
-                      margin: EdgeInsets.fromLTRB(Config.getHeight(context)/20,Config.getHeight(context)/45, 0,Config.getHeight(context)/26),
-                      height: Config.getHeight(context)/3.6,
-                      width: Config.getWidth(context)/3.3,
+                      margin: EdgeInsets.fromLTRB(Config.getHeight(context)/25,Config.getHeight(context)/45, Config.getHeight(context)/25,Config.getHeight(context)/26),
+                      height: 190,
+                      width: 135,
                       decoration: BoxDecoration(
                         color: Config.white,
                         borderRadius:  BorderRadius.circular(16.0), 
@@ -134,12 +135,141 @@ class Widgets {
                             children: [
                                 SizedBox(width: 4,),
                             Text('Most Liked',style: TextStyle(color: Config.darkGray,fontSize: 13,fontWeight: FontWeight.w500,decoration: TextDecoration.none)),
-                            SizedBox(width: 26,),
+                            SizedBox(width: 36,),
                             Config.bagIcon2,
                           ],),
                           )
                         ],
                       ),                     
                     );
-                }
+  }
+  static Widget verticalFoodCard(context,imageUrl,price,title){
+
+    return  Container(
+      margin: EdgeInsets.fromLTRB(Config.getWidth(context)/10, Config.getWidth(context)/25,0, Config.getWidth(context)/10), 
+      height: 114,
+      width: 327,
+    
+      decoration: BoxDecoration(
+            color: Config.white,
+            borderRadius:  BorderRadius.circular(16.0), 
+            boxShadow: [
+              BoxShadow(
+                color: Config.shadow.withOpacity(0.16),
+                blurRadius: 10,
+                offset: Offset(10, 15)
+              )]  
+          ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Container(
+                margin: EdgeInsets.fromLTRB(Config.getWidth(context)/90, 0,0, 0),
+                child: Image.asset(imageUrl)
+              ),
+              RichText(text: TextSpan(text: "$title\n\n",
+              style: TextStyle(color: Config.black,fontSize: 14,fontWeight: FontWeight.w400),
+              children: [
+                TextSpan(text: "View Product Details",
+              style: TextStyle(color: Config.black,fontSize: 14,fontWeight: FontWeight.w300),
+                )
+              ]
+              )),
+              SizedBox(width: 20,),
+              Column(
+                children: [
+                  Container(
+                    height: 40,
+                    width: 40,
+                    decoration: BoxDecoration(
+                      color: Config.yallow,
+                      borderRadius:  BorderRadius.circular(22.0), 
+                      boxShadow: [
+                        BoxShadow(
+                        color: Config.yallow.withOpacity(0.18),
+                        blurRadius: 10,
+                        offset: Offset(10, 15)
+                        )]  
+                    ),
+                    child: Center(child: Text("\$$price", style: TextStyle(color: Config.black,fontSize: 16,fontWeight: FontWeight.w500,decoration: TextDecoration.none),)),
+                  ),
+                  SizedBox(height: 20,),
+                  Config.bagIcon,
+                ],
+              )
+            ],),
+        );
+  }
+  static Widget verticalCard(context,price,imageUrl){
+    return  Container(
+      margin: EdgeInsets.fromLTRB(Config.getWidth(context)/20, Config.getWidth(context)/25,0, Config.getWidth(context)/10), 
+      height: 180,
+      width: 370,
+    
+      decoration: BoxDecoration(
+            color: Config.white,
+            borderRadius:  BorderRadius.circular(16.0), 
+            boxShadow: [
+              BoxShadow(
+                color: Config.shadow.withOpacity(0.16),
+                blurRadius: 10,
+                offset: Offset(10, 15)
+              )]  
+          ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              SizedBox(width: 20,),
+              Column(children: [
+                SizedBox(height: 20,),
+                RichText(text: TextSpan(text: "Beff & Salad\n",
+              style: TextStyle(color: Config.black,fontSize: 18,fontWeight: FontWeight.w400),
+              children: [
+                TextSpan(text: "We love cooking\n\n",
+              style: TextStyle(color: Config.black,fontSize: 12,fontWeight: FontWeight.w300),
+                ),
+                TextSpan(text: "\$$price",
+                style: TextStyle(color: Config.black,fontSize: 18,fontWeight: FontWeight.w500),
+                )
+              ]
+              )),
+              SizedBox(height: 10,),
+              ElevatedButton(
+                onPressed: (){},
+                style:OutlinedButton.styleFrom(
+                  backgroundColor: Config.yallow,
+                  shadowColor: Config.mediumYallow.withOpacity(0.6),
+                  elevation: 10,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(22.0),
+                    )
+                ),
+                child: Text('Add to cart',style: TextStyle(color: Config.black,fontSize: 16,fontWeight: FontWeight.w500),
+                ),
+              ),
+              ],),
+              SizedBox(width: 90,),
+              Container(
+                margin: EdgeInsets.fromLTRB(Config.getWidth(context)/900, 0,0, 0),
+                child: Image.asset(imageUrl)
+              ),
+            ],),
+        );
+  }
+  static Widget menuItem(context,FaIcon icon ,Text text,Function onPressed){
+    return Container(
+      child:TextButton(
+      onPressed: onPressed,
+      child: Row(
+        children: [
+          icon,
+          SizedBox(width: Config.getWidth(context)/15,),
+          text
+        ],
+      )
+      ),
+    );
+
+  }
+
 }

@@ -43,6 +43,12 @@ static String slider = 'assets/slider.svg';
 static Widget sliderIcon = SvgPicture.asset(slider,height: 21,width: 21,);
 
 static String pizza = 'assets/pizza.png';
+    static String burger1 = "assets/beef.png";
+    static String burger2 = "assets/beef2.png";
+    static String burger3 = "assets/chiken.png";
+    static String cola = "assets/cola.png";
+    static String coffe = "assets/coffe.png";
+    static String stake = "assets/stake.png";
 }
 
 

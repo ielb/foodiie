@@ -52,6 +52,12 @@ flutter:
     - assets/shopping_bag.svg
     - assets/slider.svg
     - assets/pizza.png
+    - assets/beef.png
+    - assets/beef2.png
+    - assets/chiken.png
+    - assets/cola.png
+    - assets/coffe.png
+    - assets/stake.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
