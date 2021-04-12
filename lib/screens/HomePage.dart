@@ -5,6 +5,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:foodiie/config/config.dart';
 import 'package:foodiie/widgets/Widgets.dart';
 
+import 'CartPage.dart';
 import 'Category_Page.dart';
 
 class HomePage extends StatefulWidget {
@@ -47,13 +48,17 @@ class _HomePageState extends State<HomePage> {
             extendBody: false,
             backgroundColor: Config.white,
             appBar:AppBar(
-              
+              leading: null,
               elevation: 0,
               bottomOpacity: 0,
               backgroundColor: Config.white,
               actions: [
                 IconButton(onPressed: (){
-                          },
+                  Navigator.push(context,
+                              MaterialPageRoute(builder: (context) {
+                                return new CartPage();
+                              }));
+                },
                 icon:Stack(
                   children: [
                   Config.bagIcon,

@@ -23,6 +23,7 @@ class Config {
   static String svg2 = 'assets/svg2.svg';
   static String svg3 = 'assets/svg3.svg';
 
+
   static double getHeight(context){
     return MediaQuery.of(context).size.height;
   }
@@ -34,6 +35,7 @@ class Config {
   static Widget getSvg1 = SvgPicture.asset(svg1,);
   static Widget getSvg2 = SvgPicture.asset(svg2,);
   static Widget getSvg3 = SvgPicture.asset(svg3,);
+  static Widget submitIcon = SvgPicture.asset("assets/submitMark.svg",color: darkGray,height: 150,width: 150,);
   
 static String bag = 'assets/shopping_bag.svg';
 static Widget bagIcon = SvgPicture.asset(bag,height: 30,width: 30,);

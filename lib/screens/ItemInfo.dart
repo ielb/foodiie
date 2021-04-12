@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:foodiie/config/config.dart';
+import 'package:foodiie/screens/CartPage.dart';
+
 import 'package:toast/toast.dart';
 
 import 'HomePage.dart';
@@ -53,75 +55,80 @@ class _ItemInfoState extends State<ItemInfo> {
             children: [
                 Container(
                   alignment: AlignmentGeometry.lerp(Alignment.topLeft, Alignment.bottomRight,Config.getWidth(context)/300000),
-                  margin: EdgeInsets.fromLTRB(Config.getHeight(context)/30, Config.getHeight(context)/35, 0, 0),
+                  margin: EdgeInsets.fromLTRB(Config.getHeight(context)/30,0, 0, 0),
                   child: Text('Pepperoni Pizza',style :TextStyle(color: Config.black,fontSize: 21,fontWeight: FontWeight.w500,decoration: TextDecoration.none),),
                 ),
-                Stack(
-                  children:[ Container(
-                    margin: EdgeInsets.fromLTRB(Config.getHeight(context)/30, Config.getHeight(context)/35, Config.getHeight(context)/30, 0),
-                    height: Config.getWidth(context)/1.5,
-                    width: Config.getWidth(context)/1.5,
-                    decoration: BoxDecoration(
-                      color: Config.yallow,
-                      borderRadius: BorderRadius.all(Radius.circular(20))
-                      
-                      ),
+                Container(
+                  margin: EdgeInsets.fromLTRB(40,0, 30, 0),
+                  alignment: Alignment.center,
+                  child: Stack(
+                    children:[ 
+                      Container(
+                      margin: EdgeInsets.fromLTRB(Config.getHeight(context)/30, Config.getHeight(context)/35, Config.getHeight(context)/30, 0),
+                      height: Config.getWidth(context)/1.6,
+                      width: Config.getWidth(context)/1.6,
+                      decoration: BoxDecoration(
+                        color: Config.yallow,
+                        borderRadius: BorderRadius.all(Radius.circular(20))
+                        
+                        ),
+                        child: Container(
+                            margin: EdgeInsets.fromLTRB(Config.getHeight(context)/90, Config.getHeight(context)/90, Config.getHeight(context)/90, Config.getHeight(context)/90),
+                            child: Image.asset(Config.pizza)),
+                    ),
+                    
+                    Container(
+                      margin:  EdgeInsets.fromLTRB(0, Config.getHeight(context)/29,0, 0),
+                      height: Config.getWidth(context)/5,
+                      width: Config.getWidth(context)/5,
+                      decoration: BoxDecoration(
+                        color: Config.yallowWhite2,
+                        borderRadius: BorderRadius.all(Radius.circular(40))
+                        ),
+                      child: Center(child: Text("\$26",style: TextStyle(color: Config.black,decoration: TextDecoration.none,fontSize: 26,fontWeight: FontWeight.w500),),),
+                    ),
+                      Container(
+                      margin:  EdgeInsets.fromLTRB(Config.getHeight(context)/3.4, Config.getHeight(context)/4.3,0, 0),
+                      height: Config.getWidth(context)/4.5,
+                      width: Config.getWidth(context)/4.5,
+                      decoration: BoxDecoration(
+                        color: Config.yallowWhite2,
+                        borderRadius: BorderRadius.all(Radius.circular(60))
+                        ),
                       child: Align(
                         alignment: Alignment.center,
-                        child: Image.asset(Config.pizza,height: 400,width:400,)),
-                  ),
-                  
-                  Container(
-                    margin:  EdgeInsets.fromLTRB(0, Config.getHeight(context)/13,0, 0),
-                    height: Config.getWidth(context)/5,
-                    width: Config.getWidth(context)/5,
-                    decoration: BoxDecoration(
-                      color: Config.yallowWhite2,
-                      borderRadius: BorderRadius.all(Radius.circular(40))
-                      ),
-                    child: Center(child: Text("\$26",style: TextStyle(color: Config.black,decoration: TextDecoration.none,fontSize: 26,fontWeight: FontWeight.w500),),),
-                  ),
-                    Container(
-                    margin:  EdgeInsets.fromLTRB(Config.getHeight(context)/3.4, Config.getHeight(context)/3.3,0, 0),
-                    height: Config.getWidth(context)/4.5,
-                    width: Config.getWidth(context)/4.5,
-                    decoration: BoxDecoration(
-                      color: Config.yallowWhite2,
-                      borderRadius: BorderRadius.all(Radius.circular(60))
-                      ),
-                    child: Align(
-                      alignment: Alignment.center,
-                      child: Row(
-                        children: [ 
-                          SizedBox(width: Config.getWidth(context)/50,),
-                          GestureDetector(
-                            onTap: (){
-                              setState(() {
-                                if(orders==0){
-                                  Toast.show("Please you can't remove more orders", context);
-                                }else{
-                                  orders --;
-                                }
-                              });
-                          },
-                            child: Icon(Icons.remove,size: 28)),
-                          Text("$orders",style: TextStyle(color: Config.black,decoration: TextDecoration.none,fontSize: 26,fontWeight: FontWeight.w500),),
-                          GestureDetector(
-                            onTap: (){ 
-                              setState(() {
-                                if(orders>=9){
-                                  Toast.show("Please you can't add more orders", context);
-                                }else{
-                                  orders ++;
-                                }
-                              });
-                          },
-                            child:Icon(Icons.add,size: 28)),
-                        ],
+                        child: Row(
+                          children: [ 
+                            SizedBox(width: Config.getWidth(context)/50,),
+                            GestureDetector(
+                              onTap: (){
+                                setState(() {
+                                  if(orders==0){
+                                    Toast.show("Please you can't remove more orders", context);
+                                  }else{
+                                    orders --;
+                                  }
+                                });
+                            },
+                              child: Icon(Icons.remove,size: 28)),
+                            Text("$orders",style: TextStyle(color: Config.black,decoration: TextDecoration.none,fontSize: 26,fontWeight: FontWeight.w500),),
+                            GestureDetector(
+                              onTap: (){ 
+                                setState(() {
+                                  if(orders>=9){
+                                    Toast.show("Please you can't add more orders", context);
+                                  }else{
+                                    orders ++;
+                                  }
+                                });
+                            },
+                              child:Icon(Icons.add,size: 28)),
+                          ],
+                        ),
                       ),
                     ),
+                    ]
                   ),
-                  ]
                 ),
                 
                   Container(
@@ -218,7 +225,46 @@ class _ItemInfoState extends State<ItemInfo> {
                       ) ,
                         ),
                       SizedBox(width: Config.getWidth(context)/15,),
-                      ElevatedButton(onPressed: (){}, child: Container(
+                      ElevatedButton(onPressed: (){
+                        showDialog(context: context, builder: (context){
+                          return Dialog(
+                            shape:RoundedRectangleBorder(borderRadius:BorderRadius.circular(12)),
+                            backgroundColor: Config.white,
+                            child: Container(
+                              height: Config.getHeight(context)/2,
+                              width: Config.getWidth(context)/1.2,
+                              child:Column(children: [
+                                SizedBox(height: Config.getHeight(context)/20,),
+                                Config.submitIcon,
+                                SizedBox(height: Config.getHeight(context)/20,),
+                                Text("Your Product Was Successfull\nAdded To Cart.",
+                                textAlign: TextAlign.center,
+                                textDirection: TextDirection.ltr,
+                                style: TextStyle(color: Config.black,fontSize: 19),),
+                                SizedBox(height: Config.getHeight(context)/20,),
+                        ElevatedButton(onPressed: (){
+                            Navigator.pushReplacement(context,
+                              MaterialPageRoute(builder: (context) {
+                                return new CartPage();
+                              }));
+                        }, child: Container(
+                        height: 40,
+                        width: 100,
+                        child: Center(child: Text("Go to Cart",style: TextStyle(fontSize: 18),)),
+                      ),
+                      style:OutlinedButton.styleFrom(
+                          backgroundColor: Config.yallow,
+                          shadowColor: Config.mediumYallow.withOpacity(0.6),
+                          elevation: 10,
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(22.0),
+                          )
+                      ),)
+                              ],)
+                            ),
+                          );
+                        });
+                      }, child: Container(
                         height: 40,
                         width: 100,
                         child: Center(child: Text("Add to Cart",style: TextStyle(fontSize: 18),)),
