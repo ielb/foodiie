@@ -153,7 +153,7 @@ class _TestPageState extends State<TestPage> {
                       scrollDirection: Axis.horizontal,
                         itemCount: 5,
                         itemBuilder: (contex,i){
-                          return Widgets.horisontalcard(context, price);
+                          return Widgets.horisontalcard(context, price,(){});
                         },
                     )
                     ),

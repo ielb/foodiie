@@ -36,7 +36,7 @@ class Config {
   static Widget getSvg3 = SvgPicture.asset(svg3,);
   
 static String bag = 'assets/shopping_bag.svg';
-static Widget bagIcon = SvgPicture.asset(bag,height: 26,width: 26,);
+static Widget bagIcon = SvgPicture.asset(bag,height: 30,width: 30,);
 static Widget bagIcon2 = SvgPicture.asset(bag,height: 21,width: 21,);
 
 static String slider = 'assets/slider.svg';
@@ -49,6 +49,14 @@ static String pizza = 'assets/pizza.png';
     static String cola = "assets/cola.png";
     static String coffe = "assets/coffe.png";
     static String stake = "assets/stake.png";
+
+
+    static String p = "assets/ingredients/p.jpg";
+    static String p1 = "assets/ingredients/p1.jpg";
+    static String p2 = "assets/ingredients/p2.jpg";
+    static String p3 = "assets/ingredients/p3.jpg";
+    static String p4 = "assets/ingredients/p4.jpg";
+    
 }
 
 

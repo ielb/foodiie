@@ -47,6 +47,7 @@ class _HomePageState extends State<HomePage> {
             extendBody: false,
             backgroundColor: Config.white,
             appBar:AppBar(
+              
               elevation: 0,
               bottomOpacity: 0,
               backgroundColor: Config.white,
@@ -59,13 +60,13 @@ class _HomePageState extends State<HomePage> {
                     Align(
                       alignment:  Alignment.topRight,
                       child: Container(
-                        height: Config.getHeight(context)/45,
-                        width: Config.getWidth(context)/28,
+                        height:Config.getWidth(context)/24 ,
+                        width: Config.getWidth(context)/24,
                         decoration: BoxDecoration(
                           color: Config.yallow,
                           borderRadius:  BorderRadius.circular(22.0),    
                         ),
-                        child: Text(orders.toString(),textAlign: TextAlign.center,style: TextStyle(color:Config.black,fontSize: 13),),
+                        child: Center(child: Text(orders.toString(),textAlign: TextAlign.center,style: TextStyle(color:Config.black,fontSize: 13),)),
                       ),
                     )
                 ],
@@ -130,14 +131,15 @@ class _HomePageState extends State<HomePage> {
                             });
                           },
                           onLongPress: (){
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(builder: (context) {
-                                return new CategoryPage(title:categories[i].title,);
-                              }
-                            ));
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(builder: (context) {
+                                  return new CategoryPage(title:categories[i].title.toString());
+                                  }
+                                ));
+                            
                           },
-                          child: Container(
+                            child: Container(
                             margin: EdgeInsets.fromLTRB(Config.getHeight(context)/35,Config.getHeight(context)/35, 0,0),
                             height: Config.getHeight(context)/23,
                             child: Center(child: Text(categories[i].title.toString(),style: TextStyle(color: Config.black,fontSize: 18,fontWeight: FontWeight.w400),)),
@@ -162,7 +164,15 @@ class _HomePageState extends State<HomePage> {
                       scrollDirection: Axis.horizontal,
                         itemCount: 5,
                         itemBuilder: (contex,i){
-                          return Widgets.horisontalcard(context, price);
+                          return GestureDetector(
+                            onTap: (){
+                            
+                            },
+                            child: Widgets.horisontalcard(context, price,(){
+                                setState(() {
+                                  orders ++;                            
+                              });
+                            }));
                         },
                     )
                     ),

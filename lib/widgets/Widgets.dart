@@ -84,7 +84,7 @@ class Widgets {
         ),
       ));
   }
-  static Widget  horisontalcard(context,price){
+  static Widget  horisontalcard(context,price,onpress){
               return Container(
                       margin: EdgeInsets.fromLTRB(Config.getHeight(context)/25,Config.getHeight(context)/45, Config.getHeight(context)/25,Config.getHeight(context)/26),
                       height: 190,
@@ -136,7 +136,9 @@ class Widgets {
                                 SizedBox(width: 4,),
                             Text('Most Liked',style: TextStyle(color: Config.darkGray,fontSize: 13,fontWeight: FontWeight.w500,decoration: TextDecoration.none)),
                             SizedBox(width: 36,),
-                            Config.bagIcon2,
+                            GestureDetector(
+                              onTap: onpress,
+                              child: Config.bagIcon2),
                           ],),
                           )
                         ],

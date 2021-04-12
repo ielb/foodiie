@@ -6,6 +6,9 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:foodiie/config/config.dart';
 import 'package:foodiie/screens/HomePage.dart';
 import 'package:foodiie/widgets/Widgets.dart';
+import 'package:toast/toast.dart' as toast;
+
+import 'ItemInfo.dart';
 
 class CategoryPage extends StatefulWidget {
   final String title ;
@@ -16,7 +19,7 @@ class CategoryPage extends StatefulWidget {
 }
 
 class _CategoryPageState extends State<CategoryPage> {
-  int orders = 3;
+  int orders = 0;
   String _categorytitle ;
   final List<Map> myProducts =
       List.generate(100000, (index) => {"id": index, "name": "Product $index"})
@@ -42,6 +45,7 @@ class _CategoryPageState extends State<CategoryPage> {
             icon:Stack(
               children: [
                 Config.bagIcon,
+                orders != 0 ?
                 Align(
                   alignment:  Alignment.topRight,
                   child: Container(
@@ -53,7 +57,7 @@ class _CategoryPageState extends State<CategoryPage> {
                     ),
                     child: Center(child: Text(orders.toString(),textAlign: TextAlign.center,style: TextStyle(color:Config.black,fontSize: 13),)),
                   ),
-                )
+                ) : Container()
               ],
             ),),
         ],
@@ -111,7 +115,26 @@ class _CategoryPageState extends State<CategoryPage> {
                 childAspectRatio: ( 125/160),
                         crossAxisCount:2,
                         children: List.generate(20, (index) {
-                        return Widgets.horisontalcard(context, 23);
+                        return GestureDetector(
+                          onTap: (){
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) {
+                                return new ItemInfo();
+                              }
+                            ));
+                          },
+                          child: Widgets.horisontalcard(context, 23,(){
+                            setState(() {
+                              if(orders>=10){
+                              toast.Toast.show("Sorry you can't get more item than 10", context);
+                              }else{
+                                orders ++; 
+                              }
+                                    
+                            });
+                          }),
+                        );
                         },
                     )
       ),
