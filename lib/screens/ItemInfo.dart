@@ -279,7 +279,6 @@ class _ItemInfoState extends State<ItemInfo> {
                       ),)
                     ],
                   )
-
             ],
             ),
           ),

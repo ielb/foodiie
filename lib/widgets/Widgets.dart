@@ -273,5 +273,58 @@ class Widgets {
     );
 
   }
+  static Widget cartItem(BuildContext context ,String title,int orders, int price ,Function viewProductPess,Function removePress,Function addPress){
+    return Container(
+            margin:  EdgeInsets.fromLTRB(0, 0,0, Config.getHeight(context)/30),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+                  height: 60,
+                  width: 60,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.all(Radius.circular(18)),
+                    color: Config.yallow,
+                    boxShadow: [
+                      BoxShadow(
+                        color: Config.yallow.withOpacity(0.16),
+                        blurRadius: 10,
+                        offset: Offset(10, 15)
+                      )
+                    ]  
+                  ),
+                  child: Center(child: Image.asset(Config.pizza,width: 55,height: 55,)),
+                ),
+                SizedBox(width: Config.getWidth(context)/30,),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Text("$title",style: TextStyle(color: Config.black,fontSize: 16 ,fontWeight: FontWeight.w500)),
+                    SizedBox(height: Config.getHeight(context)/150,),
+                    GestureDetector(
+                      child: Text("View Product",
+                      style: TextStyle(color: Config.darkGray,fontSize: 14,fontWeight: FontWeight.w400,)
+                      ),
+                      onTap: viewProductPess,
+                    ),
+                  ],
+                ),
+                SizedBox(width: Config.getWidth(context)/20,),
+                Text("\$$price",style: TextStyle(color: Config.black,fontSize: 18,fontWeight: FontWeight.w500)),
+                SizedBox(width: Config.getWidth(context)/30,),
+                GestureDetector(
+                  onTap: removePress,
+                  child: Icon(Icons.remove)),
+                SizedBox(width: 5,),
+                Text("$orders",style: TextStyle(color: Config.black,fontSize: 16,fontWeight: FontWeight.w500)),
+                SizedBox(width: 5,),
+                GestureDetector(
+                  onTap: addPress,
+                  child:Icon(Icons.add)),
+              ],
+          ),
+          );
+  }
 
 }
