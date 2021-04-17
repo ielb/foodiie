@@ -43,6 +43,8 @@ static Widget bagIcon2 = SvgPicture.asset(bag,height: 21,width: 21,);
 
 static String slider = 'assets/slider.svg';
 static Widget sliderIcon = SvgPicture.asset(slider,height: 21,width: 21,);
+static Widget masterCard = Image.asset("assets/mastercard.png",height: 28,width: 28,);
+static Widget visa = Image.asset("assets/visa.png",height: 28,width: 28,);
 
 static String pizza = 'assets/pizza.png';
     static String burger1 = "assets/beef.png";

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:foodiie/config/config.dart';
 import 'package:foodiie/screens/HomePage.dart';
+import 'package:foodiie/screens/PaymentPage.dart';
 import 'package:foodiie/widgets/Widgets.dart';
 import 'package:toast/toast.dart';
 
@@ -16,13 +17,12 @@ class _CartPageState extends State<CartPage> {
   int items = 4;
   int orders = 1;
   double subtotal ;
-  double total ;
+  double total = 0;
   double delevery =10.0;
   int price = 23;
   String title = "Perperoni Piza";
   @override
   void initState() { 
-   
     super.initState();
   }
   @override
@@ -125,7 +125,9 @@ class _CartPageState extends State<CartPage> {
             alignment: Alignment.center,
             child: ElevatedButton(
               onPressed:(){
-                print("Chekout pressed");
+                Navigator.push(context, MaterialPageRoute(builder: (context){
+                  return new Payment(this.total);
+                }));
               },
               child: Container(
                 height: 50,

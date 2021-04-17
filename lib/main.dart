@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:foodiie/screens/HomePage.dart';
 
-
-// import 'package:foodiie/screens/loading_screen.dart';
-
 void main() {
   runApp(MyApp());
 }
